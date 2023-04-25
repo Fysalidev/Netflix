@@ -8,7 +8,7 @@ export default NextAuth({
   providers: [
     Credentials({
       id: "credentials",
-      name: "Credentials",
+      name: "credentials",
       credentials: {
         email: {
           label: "Email",
@@ -53,7 +53,7 @@ export default NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/auth",
   },
   debug: process.env.NODE_ENV === "development",
   session: {
