@@ -25,6 +25,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <div className="bg-gray-500"></div>
     </>
   );
 }

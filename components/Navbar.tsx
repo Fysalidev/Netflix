@@ -15,27 +15,27 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
+      console.log(window.scrollY)
       if (window.scrollY >= TOP_OFFSET) {
-        setShowBackground(true);
+        setShowBackground(true)
       } else {
-        setShowBackground(false);
+        setShowBackground(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleMobileMenu = useCallback(() => {
-    setShowMobileMenu((current) => !current);
+      window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
     setShowAccountMenu((current) => !current);
+  }, []);
+
+  const toggleMobileMenu = useCallback(() => {
+    setShowMobileMenu((current) => !current);
   }, []);
 
   return (
