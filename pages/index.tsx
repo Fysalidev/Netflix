@@ -1,6 +1,7 @@
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
+import Billboard from "@/components/Billboard";
 
 // Rediriger vers la page d'authentification si l'utilisateur n'est pas connecté
 export async function getServerSideProps(context: NextPageContext) {
@@ -25,7 +26,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-500"></div>
+      <Billboard />
     </>
   );
 }
