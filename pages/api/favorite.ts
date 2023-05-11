@@ -10,6 +10,7 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
+      
       const { currentUser } = await serverAuth(req);
       const { movieId } = req.body;
 
@@ -18,6 +19,8 @@ export default async function handler(
           id: movieId,
         },
       });
+
+      console.log(existingMovie);
 
       if (!existingMovie) {
         throw new Error("Invalid ID");
