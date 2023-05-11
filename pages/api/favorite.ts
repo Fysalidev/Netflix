@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { rest, without } from "lodash";
+import { without } from "lodash";
 
 import prismadb from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
