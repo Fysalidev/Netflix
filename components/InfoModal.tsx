@@ -12,7 +12,7 @@ interface InfoModalProps {
 }
 
 const InformModal = ({ visible, onClose }: InfoModalProps) => {
-  const [isVisible, setIsVisible] = useState(!!visible);
+  const [isVisible, setIsVisible] = useState<boolean>(!!visible);
 
   const { movieId } = useInfoModal();
   const { data = {} } = useMovie(movieId);
@@ -24,64 +24,33 @@ const InformModal = ({ visible, onClose }: InfoModalProps) => {
   const handleClose = useCallback(() => {
     setIsVisible(false);
     setTimeout(() => {
-      onClose;
+      onClose();
     }, 300);
   }, [onClose]);
 
-  if (!visible) return null;
+  if (!visible) {
+    return null;
+  }
 
-  return (
-    <div
-      className="
-        z-50
-        transition
-        duration-300
-        bg-black
-        bg-opacity-80
-        flex
-        justify-center
-        items-center
-        overflow-x-hidden
-        overflow-y-auto
-        fixed
-        inset-0
-        "
-    >
-      <div
-        className="
-        relative
-        w-auto
-        mx-auto
-        max-w-3xl
-        rounded-md
-        overflow-hidden
-        "
-      >
+  /*  if (!visible) return null; */
+
+  return isVisible ? (
+    <div className="z-50 transition duration-300 bg-black bg-opacity-80 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0">
+      <div className="relative w-auto mx-auto max-w-3xl rounded-md overflow-hidden">
         <div
-          className={`
-        ${isVisible ? "scale-100" : "scale-0"}
-        transform
-        duration-300
-        relative
-        flex-auto
-        bg-zinc-900
-        drop-shadow-md
-        `}
+          className={`${
+            isVisible ? "scale-100" : "scale-0"
+          } transform duration-300 relative flex-auto bg-zinc-900 drop-shadow-md`}
         >
           <div className="relative h-96">
             <video
-              className="
-              w-full
-              brightness-[60%]
-              object-cover
-              h-full
-              "
+              className="w-full brightness-[60%] object-cover h-full"
+              poster={data?.thumbnailUrl}
+              src={data?.videoUrl}
               autoPlay
               muted
               loop
-              poster={data?.thumbnailUrl}
-              src={data?.videoUrl}
-            ></video>
+            />
             <div
               className="
               cursor-pointer 
@@ -127,7 +96,7 @@ const InformModal = ({ visible, onClose }: InfoModalProps) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default InformModal;
