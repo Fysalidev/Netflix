@@ -2,12 +2,14 @@
 
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteButton from "./FavoriteButton";
+import { useRouter } from "next/router";
 
 interface MovieCardProps {
   data: Record<string, any>;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+  const router = useRouter();
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
@@ -89,24 +91,20 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
                 transition
                 hover:bg-neutral-300
                 "
-              onClick={() => {}}
+              onClick={() => router.push(`/watch/${data?.id}`)}
             >
               <BsFillPlayFill size={25} />
             </div>
-            <FavoriteButton movieId={data?.id}/>
+            <FavoriteButton movieId={data?.id} />
           </div>
           <p className="text-green-400 font-semibold mt-4">
             <span className="text-white">2023</span>
           </p>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">
-                {data.duration}
-            </p>
+            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">
-                {data.genre}
-            </p>
+            <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
           </div>
         </div>
       </div>

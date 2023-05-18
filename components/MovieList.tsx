@@ -23,7 +23,7 @@ const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
         </p>
         <div className="grid grid-cols-4 gap-2">
           {data.map((movie) => (
-            <MovieCard key={movie.id} data={movie}/>
+            <MovieCard key={movie.id} data={movie} />
           ))}
         </div>
       </div>

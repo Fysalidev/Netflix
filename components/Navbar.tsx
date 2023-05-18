@@ -15,19 +15,19 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY)
+      console.log(window.scrollY);
       if (window.scrollY >= TOP_OFFSET) {
-        setShowBackground(true)
+        setShowBackground(true);
       } else {
-        setShowBackground(false)
+        setShowBackground(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
