@@ -5,6 +5,8 @@ import PlayButton from "@/components/PlayButton";
 
 const Billboard = () => {
   const { data } = useBillboard();
+
+  
   return (
     <div className="relative h-[56.25vw]">
       <video

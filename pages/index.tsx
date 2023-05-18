@@ -1,10 +1,12 @@
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
+import InformModal from "@/components/InfoModal";
 import Navbar from "@/components/Navbar";
 import Billboard from "@/components/Billboard";
 import MovieList from "@/components/MovieList";
-import useMovieList  from "@/hooks/useMovieList";
+import useMovieList from "@/hooks/useMovieList";
 import useFavorites from "@/hooks/useFavorites";
+import useInfoModal from "@/hooks/useInfoModal";
 
 // Rediriger vers la page d'authentification si l'utilisateur n'est pas connecté
 export async function getServerSideProps(context: NextPageContext) {
@@ -26,11 +28,13 @@ export async function getServerSideProps(context: NextPageContext) {
 
 // Home page UI
 export default function Home() {
-  const {data: movies = []} =  useMovieList()
-  const {data: favorites = []} =  useFavorites()
+  const { data: movies = [] } = useMovieList();
+  const { data: favorites = [] } = useFavorites();
+  const { isOpen, closeModal } = useInfoModal();
 
   return (
     <>
+      <InformModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
       <div className="pb-40">
